@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Jhon",
+      "lastname": "Doe",
+      "email": "jhon@gmail.com",
+      "password": "123456",
+      "role": "User"
+    },
+    {
+      "id": 2,
+      "firstname": "Jan",
+      "lastname": "felipe",
+      "email": "jane@gmail.com",
+      "password": "123",
+      "role": "Choach"
+    },
+    {
+      "firstname": "karol",
+      "lastname": "GI",
+      "email": "karol@karol",
+      "password": "1234",
+      "role": "User",
+      "id": 3
+    },
+    {
+      "firstname": "admin",
+      "lastname": "god",
+      "email": "admin@admin",
+      "password": "123456",
+      "role": "Coach",
+      "id": 4
+    }
+  ]
+}
