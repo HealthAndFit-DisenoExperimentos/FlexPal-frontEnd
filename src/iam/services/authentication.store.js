@@ -47,20 +47,20 @@ export const useAuthenticationStore = defineStore({
          * @param router - The router instance
          */
         async signIn(signInRequest, router) {
-            authenticationService.signIn(signInRequest)
-                .then(response => {
-                    let signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token, response.data.role);
-                    this.signedIn = true;
-                    this.userId = signInResponse.id;
-                    this.username = signInResponse.username;
-                    localStorage.setItem('token', signInResponse.token);
-                    console.log(signInResponse);
-                    router.push({name: 'home'});
-                })
-                .catch(error => {
-                    console.error(error);
-                    router.push({name: 'sign-in'});
-                });
+            try {
+                const response = await authenticationService.signIn(signInRequest);
+                const signInResponse = new SignInResponse(response.data.id, response.data.username, response.data.token, response.data.role);
+                this.signedIn = true;
+                this.userId = signInResponse.id;
+                this.username = signInResponse.username;
+                localStorage.setItem('token', signInResponse.token);
+                console.log(signInResponse);
+                router.push({ name: 'home' });
+            } catch (error) {
+                console.error('Error during sign-in:', error.response?.data?.message || error.message);
+                alert('Error during sign-in: ' + (error.response?.data?.message || 'Unexpected error occurred'));
+                router.push({ name: 'sign-in' });
+            }
         },
 
         /**
